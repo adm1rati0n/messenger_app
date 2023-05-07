@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { AuthContextProvider } from "./context/AuthContext";
+import { ContextProvider } from "./context/ActiveChatContext";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Auth from "./pages/login";
+// eslint-disable-next-line
+import Chats from './pages/chat';
+import './assets/login.css';
+import './assets/global.css';
+import './assets/chat-feed.css';
+import './assets/chat-info.css';
+import './assets/chat-list.css';
+import './assets/menu.css';
+import './assets/sign-up.css';
+import './assets/message-form.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <ContextProvider>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Auth />} />
+            <Route path='/chats' element={<Chats />} />
+          </Routes>
+        </Router>
+      </ContextProvider>
+    </AuthContextProvider>
   );
-}
-
+};
 export default App;

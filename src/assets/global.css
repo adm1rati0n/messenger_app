@@ -1,0 +1,39 @@
+.column {
+    float: left;
+    overflow-x: auto;
+}
+
+.column-left {
+    width: 25%;
+    height: 100vh;
+    float: left;
+    background-color: #4a5162;
+}
+
+.column-right {
+    width: 25%;
+    height: 100vh;
+    float: left;
+    background-color: #4a5162;
+}
+
+.column-middle {
+    width: 50%;
+    height: 100vh;
+    float: left;
+    background-color: #4a5162;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #4a5162;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, 0.568);
+    border-radius: 10px;
+}
