@@ -1,10 +1,10 @@
 import React from "react";
-import ChatList from "./ChatList";
-import ChatFeed from "./ChatFeed";
-import ChatInfo from "./ChatInfo";
+import ChatList from "./chats/ChatList";
+import ChatFeed from "./messages/ChatFeed";
+import ChatInfo from "./info/ChatInfo";
 const Chats = () => {
     return (
-        <div>
+        <div className="column">
             <div className="column-left">
                 <ChatList />
             </div>

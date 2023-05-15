@@ -27,7 +27,7 @@ const MessageFeed = (props) => {
                 clearTimeout(interval)
             }
         }
-    }, [time])
+    }, [time, currentChat, headers])
     if (messageData !== null) {
         return messageData.map((data, index) => {
             const lastMessage = index === 0 ? null : messageData[index - 1];

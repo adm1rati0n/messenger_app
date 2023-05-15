@@ -34,7 +34,7 @@
 }
 
 .auth-title {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     width: 100%;
     text-align: center;
     color: white;
@@ -44,7 +44,8 @@
 .text-input {
     width: 100%;
     padding: 8px;
-    margin-bottom: 24px;
+    margin-top: 10px;
+    margin-bottom: 14px;
     background-color: #4a5162;
     outline: none;
     border-width: 0px;
@@ -53,6 +54,7 @@
 }
 
 .error-label {
+    position: absolute;
     color: hsl(6, 100%, 64%);
     width: 100%;
     font-size: 14px;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { ActiveChatContext } from "../../../context/ActiveChatContext"
 import MessageFeed from "./MessageFeed"
-import MessageForm from "../MessageForm"
+import MessageForm from "./MessageForm"
 const ChatFeed = () => {
     const {
         currentChat,

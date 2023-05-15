@@ -6,8 +6,6 @@ import { AuthContext } from "../../../context/AuthContext";
 
 const CurrentChatInfo = () => {
 
-    const [title, setTitle] = useState(`${currentChatTitle}`)
-    const [errorMessage, setErrorMessage] = useState('')
 
     const {
         currentChatTitle,
@@ -20,6 +18,10 @@ const CurrentChatInfo = () => {
     const {
         headers
     } = useContext(AuthContext)
+
+    const [title, setTitle] = useState(`${currentChatTitle}`)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [image, setImage] = useState(currentChatAvatar)
 
     const updateChatInfo = (title, image) => {
         apiClient.put(`chats/${currentChat}`, {
@@ -39,7 +41,7 @@ const CurrentChatInfo = () => {
         setTitle(e.target.value)
         setErrorMessage('')
     }
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         updateChatInfo(title, currentChatAvatar)
     }
@@ -52,11 +54,11 @@ const CurrentChatInfo = () => {
         e.preventDefault();
         var file = e.target.value
         var filename = file.name
-        var extension = file.type.replace(/(.*)\//g,'')
-        if (extension !== 'png' || extension !== 'jpg' || extension !== 'gif' || extension !== 'jpeg'){
+        var extension = file.type.replace(/(.*)\//g, '')
+        if (extension !== 'png' || extension !== 'jpg' || extension !== 'gif' || extension !== 'jpeg') {
             setErrorMessage('Аватар беседы должен быть изображением')
         }
-        else{
+        else {
             updateChatInfo(currentChatTitle, `${filename}.${extension}`)
         }
     }
@@ -68,8 +70,8 @@ const CurrentChatInfo = () => {
                     {errorMessage}
                 </label>
                 <img
-                    src={currentChatAvatar}
-                    alt="message-attachment"
+                    src={`http://127.0.0.1:8888/uploads/${currentChatAvatar}`}
+                    alt="avatar-attachment"
                     className="chat-avatar"
                 />
                 <label htmlFor="upload-chat-avatar">
@@ -78,19 +80,17 @@ const CurrentChatInfo = () => {
                     </span>
                 </label>
                 <input
-                    type="image"
+                    type="file"
                     accept="image/*"
                     multiple={false}
                     id="upload-chat-avatar"
                     style={{ display: 'none' }}
                     onChange={handleUpload}
-                    value={image}
                 />
             </div>
             <div className="chat-info-title-container">
-                <input className="chat-info-title" readOnly="true" id="id_title"
-                    onChange={handleChange} onSubmit={handleSubmit} value={title}>
-                    {currentChatTitle}
+                <input className="chat-info-title" readOnly="readonly" id="id_title"
+                    onChange={handleChange} onSubmit={handleSubmit} value={currentChatTitle}>
                 </input>
                 <button className="edit-title-button" onClick={handleEditTitle}>
                     <EditOutlined className="edit-title-icon" />

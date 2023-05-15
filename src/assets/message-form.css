@@ -1,17 +1,29 @@
 .message-form {
-    overflow-x: hidden;
-    background-color: #4a5162
+    position: relative;
+    background-color: #4a5162;
+    border-top: 1px solid #404655;
+    padding-top: 14px;
+    padding-bottom: 14px;
 }
 
 .message-input {
-    height: 30px;
-    width: calc(100% - 120px);
+    overflow-y: auto;
+    word-wrap: break-word;
+    resize: none;
+    min-height: 30px;
+    max-height: 300px;
+    width: calc(100% - 150px);
     background-color: #4a5162;
     color: white;
     padding: 0px 12px;
     outline: none;
     border: 0px;
     font-size: 15px;
+}
+
+.emoji-picker {
+    bottom: 0;
+    position: absolute;
 }
 
 .image-button {
@@ -40,4 +52,15 @@
     color: white;
     position: relative;
     font-size: 16px;
+}
+
+.emoji-button {
+    cursor: pointer;
+    background-color: #4a5162;
+    border: 0px;
+}
+
+.emoji-icon {
+    color: white;
+    font-size: 20px;
 }

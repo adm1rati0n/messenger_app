@@ -1,6 +1,66 @@
 .column {
-    float: left;
-    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    width: 350px;
+    height: 130px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4a5162;
+    border-radius: 0.75rem;
+    padding: 10px;
+}
+
+.modal-header {
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.modal-text {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.modal-flag-container {
+    padding: 5px;
+    width: 100%;
+}
+
+.modal-flag {
+    cursor: pointer;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.modal-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
 }
 
 .column-left {

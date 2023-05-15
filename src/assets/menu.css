@@ -1,0 +1,61 @@
+.menu-button-container {
+    border: 0px;
+    position: absolute;
+    height: 30px;
+    z-index: 3;
+    right: 0;
+    padding: 5px;
+    top: 0;
+}
+
+.username-avatar {
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+}
+
+
+.menu-button {
+    border: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: #404655;
+    color: white;
+    border-radius: 6px;
+}
+
+.menu-button:hover {
+    background-color: #4a5162;
+}
+
+.menu-container {
+    position: absolute;
+    z-index: 2;
+    background-color: #404655;
+    border-radius: 10px;
+    width: 25%;
+    margin-top: 10px;
+}
+
+.username-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.username-text {
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.user-menu-button {
+    border: 0px;
+    cursor: pointer;
+    background-color: #4a5162;
+}
+
+.user-menu-icon {
+    color: white;
+    font-size: 20px;
+}

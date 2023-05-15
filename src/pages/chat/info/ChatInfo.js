@@ -9,11 +9,11 @@ const ChatInfo = () => {
         currentChat
     } = useContext(ActiveChatContext)
     return (
-        <div className="chat-info-container">
+        <div className="chat-info-container">.
             <Menu />
             {
                 currentChat !== 0 ?
-                    <div>
+                    <div className="chat-info-container-main">
                         <div className="info-container">
                             <CurrentChatInfo />
                         </div>
