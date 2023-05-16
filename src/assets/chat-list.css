@@ -58,12 +58,36 @@
     position: relative;
     float: left;
     color: white;
-    width: 85%;
+    width: 70%;
     height: 50%;
     font-size: 17px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.chatlist-unread-number-container {
+    position: relative;
+    float: left;
+    color: white;
+    width: 10%;
+    height: 50%;
+    text-align: center;
+}
+
+.chatlist-unread-number {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #6e7688;
+    border-radius: 10px;
+    width: 80%;
+    font-size: 11px;
+    height: 70%;
 }
 
 .chatlist-card-message {

@@ -10,6 +10,7 @@ import Auth from "./pages/login";
 // eslint-disable-next-line
 import Chats from './pages/chat';
 import './assets/login.css';
+import './assets/gallery.css';
 import './assets/global.css';
 import './assets/chat-feed.css';
 import './assets/chat-info.css';

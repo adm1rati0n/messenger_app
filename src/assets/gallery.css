@@ -1,0 +1,59 @@
+.extension-picker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 5px;
+}
+
+.extension-pick {
+    color: white;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #404655;
+    border-radius: 10px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* auto-fit to make grid resize based on the number of columns */
+    grid-auto-rows: min-content; /* set height of grid items */
+  }
+  .gallery-image {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+/* .gallery-image {
+    width: 100%;
+    height: auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(3, 1fr);
+} */
+
+.gallery-video {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-audio {
+    width: 100%;
+    height: auto;
+    padding: 3px;
+}
+
+.gallery-file {}
+
+.gallery-list {
+    display: flex;
+    flex-direction: column;
+}

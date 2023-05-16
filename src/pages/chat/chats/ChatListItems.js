@@ -80,6 +80,16 @@ const ChatListItems = () => {
                         <div className="chatlist-card-title">
                             {data.title}
                         </div>
+                        {(data.unread_number !== 0 ?
+                            <div className="chatlist-unread-number-container">
+                                <div className="chatlist-unread-number">
+                                    {data.unread_number}
+                                </div>
+                            </div>
+                            :
+                            <></>
+                        )
+                        }
                         {
                             data.last_message === null ?
                                 <div />

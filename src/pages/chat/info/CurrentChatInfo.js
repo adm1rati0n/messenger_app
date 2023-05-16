@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ActiveChatContext } from "../../../context/ActiveChatContext";
 import { EditOutlined } from "@ant-design/icons";
 import apiClient from "../../../data/constants";
@@ -16,22 +16,26 @@ const CurrentChatInfo = () => {
     } = useContext(ActiveChatContext)
 
     const {
-        headers
+        headers,
+        token
     } = useContext(AuthContext)
 
     const [title, setTitle] = useState(`${currentChatTitle}`)
     const [errorMessage, setErrorMessage] = useState('')
-    const [image, setImage] = useState(currentChatAvatar)
+    const [images, setImages] = useState('')
+
+    useEffect(() => {
+        setTitle(currentChatTitle)
+    }, [currentChatTitle])
 
     const updateChatInfo = (title, image) => {
         apiClient.put(`chats/${currentChat}`, {
-            title: title,
             conversation_avatar_url: image,
+            title: title,
         }, headers
         ).then(() => {
             setCurrentChatAvatar(image)
             setCurrentChatTitle(title)
-            document.getElementById('id_title').readOnly = true
         }).catch(function (error) {
             console.log(error)
         })
@@ -45,21 +49,45 @@ const CurrentChatInfo = () => {
         e.preventDefault();
         updateChatInfo(title, currentChatAvatar)
     }
+
     const handleEditTitle = (e) => {
         e.preventDefault()
-        document.getElementById('id_title').readOnly = false
+        const titleInput = document.getElementById('id_title')
+        titleInput.style.backgroundColor = '#5d657a'
+        titleInput.select();
+        titleInput.focus();
     }
 
-    const handleUpload = (e) => {
+    const handleUpload = async (e) => {
         e.preventDefault();
-        var file = e.target.value
+        var file = e.target.files[0]
+        console.log(`file: ${file}`)
         var filename = file.name
+        console.log(`filename: ${filename}`)
         var extension = file.type.replace(/(.*)\//g, '')
-        if (extension !== 'png' || extension !== 'jpg' || extension !== 'gif' || extension !== 'jpeg') {
+        console.log(`extension: ${extension}`)
+        if (extension !== 'png' && extension !== 'jpg' && extension !== 'gif' && extension !== 'jpeg') {
             setErrorMessage('Аватар беседы должен быть изображением')
         }
         else {
-            updateChatInfo(currentChatTitle, `${filename}.${extension}`)
+            const formData = new FormData();
+            formData.append('file', e.target.files[0])
+            try {
+                const response = await apiClient.post('upload', formData, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                if (response.data[0].file_name) {
+                    const newImage = response.data[0].file_name
+                    console.log(`newImage: ${newImage}`)
+                    setImages(newImage)
+                    updateChatInfo(currentChatTitle, newImage)
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
@@ -89,8 +117,8 @@ const CurrentChatInfo = () => {
                 />
             </div>
             <div className="chat-info-title-container">
-                <input className="chat-info-title" readOnly="readonly" id="id_title"
-                    onChange={handleChange} onSubmit={handleSubmit} value={currentChatTitle}>
+                <input className="chat-info-title" id="id_title"
+                    onChange={handleChange} onSubmit={handleSubmit} value={title} onClick={handleEditTitle}>
                 </input>
                 <button className="edit-title-button" onClick={handleEditTitle}>
                     <EditOutlined className="edit-title-icon" />

@@ -14,19 +14,48 @@
 
 .participants-container {
     position: relative;
-    padding: 18px;
+    padding-bottom: 10px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+}
+
+.participants-container::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    left: 5%;
+    border-bottom: 3px solid white;
 }
 
 .chat-gallery {
+    flex-grow: 1;
+    overflow-y: auto;
     position: relative;
-    padding: 18px;
+    padding-bottom: 10px;
     width: 100%;
+}
+
+.chat-gallery-main {
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-info-main {
     position: relative;
     width: 100%;
+}
+
+.chat-info-main::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    left: 5%;
+    border-bottom: 3px solid white;
 }
 
 .chat-avatar-container {
@@ -65,7 +94,6 @@
 
 .chat-info-title-container {
     position: relative;
-    margin-top: 5px;
     width: 100%;
     height: 50px;
     text-align: center;
@@ -73,34 +101,31 @@
 
 .chat-info-title {
     color: white;
-    font-weight: 800px;
     font-size: 16px;
+    height: 90%;
     background-color: #4a5162;
     width: 95%;
     word-wrap: break-word;
-    margin: 0 auto;
     outline: none;
     border: 0px;
     text-align: center;
+}
+
+.chat-info-title:hover {
+    background-color: #5d657a;
 }
 
 .chat-info-title-container .edit-title-button {
     visibility: hidden;
     position: absolute;
     right: 0;
-    top: 5px;
-}
-
-.chat-info-container:hover{
-    background-color: #50586a;
 }
 
 .chat-info-title-container:hover .edit-title-button {
     visibility: visible;
-    background-color: #4a5162;
+    background-color: transparent;
     position: absolute;
     right: 0;
-    top: 5px;
     border: none;
 }
 
@@ -109,4 +134,60 @@
     font-size: 14px;
     visibility: inherit;
     cursor: pointer;
+}
+
+.participant-container {
+    width: 100%;
+    height: 50px;
+    flex: auto;
+    flex-direction: column;
+}
+
+.participant-avatar-container {
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 15%;
+    text-align: center;
+}
+
+.participant-avatar {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.participant-username-container {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 85%;
+}
+
+.participant-username {
+    width: 100%;
+    color: hsl(0, 1%, 80%);
+}
+
+.info-section {
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-section-title {
+    color: white;
+    font-size: 18px;
+}
+
+.info-section-button {
+    background-color: transparent;
+}
+
+.info-section-icon {
+    color: white;
 }

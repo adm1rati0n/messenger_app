@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const ActiveChatContext = createContext()

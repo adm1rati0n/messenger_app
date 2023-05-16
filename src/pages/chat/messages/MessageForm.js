@@ -7,24 +7,6 @@ import { PictureOutlined, SendOutlined, SmileOutlined } from "@ant-design/icons"
 import apiClient from "../../../data/constants"
 const MessageForm = () => {
 
-    // const localization = {
-    //     search: 'Поиск',
-    //     categories: {
-    //         search: 'Результаты поиска',
-    //         recent: 'Недавние',
-    //         smileys: 'Эмоции',
-    //         people: 'Жесты и люди',
-    //         nature: 'Животные и природа',
-    //         foods: 'Еда и напитки',
-    //         activities: 'Занятия',
-    //         places: 'Места и путешествия',
-    //         objects: 'Предметы',
-    //         symbols: 'Символы',
-    //         flags: 'Флаги',
-    //     },
-    // }
-
-    // const [file, setFile] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [showEmoji, setShowEmoji] = useState(false);
 
@@ -46,7 +28,8 @@ const MessageForm = () => {
     const handleUpload = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('file', event.target.files[0])
+        for (let file of event)
+            formData.append('file', file)
         try {
             const response = await apiClient.post('upload', formData, {
                 headers: {
@@ -59,17 +42,6 @@ const MessageForm = () => {
         } catch (error) {
             console.log(error);
         }
-        // apiClient.post('upload', {
-        //     body: formData
-        // }, headers)
-        //     .then((res) => {
-        //         setImageUrl(res.url)
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response) {
-        //             alert(error)
-        //         }
-        //     })
     }
 
     const handleShowEmoji = (event) => {
@@ -137,7 +109,7 @@ const MessageForm = () => {
                 </label>
                 <input
                     type="file"
-                    multiple={false}
+                    multiple
                     id="upload-button"
                     style={{ display: 'none' }}
                     onChange={handleUpload}

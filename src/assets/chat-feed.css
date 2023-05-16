@@ -98,8 +98,8 @@
     object-fit: cover;
     max-height: 100%;
     max-width: 100%;
-    min-height: 100px;
-    min-width: 100px;
+    min-height: 50px;
+    min-width: 50px;
 }
 
 .message {
